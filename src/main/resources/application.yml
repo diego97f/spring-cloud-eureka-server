@@ -1,11 +1,28 @@
+# Application configuration for Spring Cloud Eureka Server
+# This configuration file defines the basic settings for the Eureka Server instance
+
 spring:
+  # Active profile configuration
+  # 'dev' profile is set for development environment
   profiles:
     active: dev
+    
+  # Application name configuration
+  # This name will be used to identify the service in the service registry
   application:
     name: eureka-server
+    
+  # Spring Cloud Config Server configuration
+  # Imports configuration from an external configuration server
   config:
     import: configserver:http://localhost:8888
+    
+  # Cloud configuration section
+  # Contains settings specific to Spring Cloud components
   cloud:
     config:
+      # Authentication credentials for the Config Server
+      # These can be overridden using environment variables
+      # CONFIG_SERVER_USERNAME and CONFIG_SERVER_PASSWORD
       username: ${CONFIG_SERVER_USERNAME:configadmin}
       password: ${CONFIG_SERVER_PASSWORD:secretpassword}
