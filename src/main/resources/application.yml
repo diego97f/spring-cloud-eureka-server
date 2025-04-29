@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: eureka-server
+  config:
+    import: configserver:http://localhost:8888
+  cloud:
+    config:
+      username: ${CONFIG_SERVER_USERNAME:configadmin}
+      password: ${CONFIG_SERVER_PASSWORD:secretpassword}
